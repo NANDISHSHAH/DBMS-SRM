@@ -1,0 +1,5 @@
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group by depositor.customer_name having count(distinct depositor.account_no)>=2;
+
+CUSTOMER_NAME                  AVG(BALANCE)
+------------------------------ ------------
+aditya                                 4750

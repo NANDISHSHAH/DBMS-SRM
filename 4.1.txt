@@ -1,0 +1,1030 @@
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name=`pnb' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='pnb' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='sbi' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='hdfc' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select * from loan;
+
+LOAN_NO                        BRANCH_NAME                        AMOUNT        
+------------------------------ ------------------------------ ----------        
+lo100                          hsbc                                10000        
+lo101                          icic                                15000        
+lo102                          pnb                                 10000        
+lo103                          iob                                 20000        
+lo104                          hsbc                                25000        
+lo105                          icic                                20000        
+lo106                          pnb                                 30000        
+lo107                          iob                                 35000        
+lo108                          hsbc                                10000        
+lo109                          icic                                15000        
+lo110                          pnb                                 20000        
+
+11 rows selected.
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10001                                            
+astha                          10002                                            
+atif                           10005                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+18 rows selected.
+
+SQL> select * from borrower;
+
+CUSTOMER_NAME                  LOAN_NO                                          
+------------------------------ ------------------------------                   
+aditya                         lo106                                            
+aman                           lo109                                            
+ankit                          lo107                                            
+ankita                         lo102                                            
+atif                           lo110                                            
+kadam                          lo108                                            
+kartik                         lo100                                            
+namya                          lo100                                            
+nitya                          lo102                                            
+raju                           lo103                                            
+rakesh                         lo104                                            
+
+CUSTOMER_NAME                  LOAN_NO                                          
+------------------------------ ------------------------------                   
+ramesh                         lo105                                            
+shweta                         lo101                                            
+
+13 rows selected.
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='icici' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='iob' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct branch_name from depositor;
+select distinct branch_name from depositor
+                *
+ERROR at line 1:
+ORA-00904: "BRANCH_NAME": invalid identifier 
+
+
+SQL> select distinct branch_name from account;
+
+BRANCH_NAME                                                                     
+---------------                                                                 
+hsbc                                                                            
+sbi                                                                             
+icici                                                                           
+hdfc                                                                            
+
+SQL> select distinct branch_name from loan;
+
+BRANCH_NAME                                                                     
+------------------------------                                                  
+hsbc                                                                            
+icic                                                                            
+pnb                                                                             
+iob                                                                             
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='hsbc' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select * from loan
+  2  ;
+
+LOAN_NO                        BRANCH_NAME                        AMOUNT        
+------------------------------ ------------------------------ ----------        
+lo100                          hsbc                                10000        
+lo101                          icic                                15000        
+lo102                          pnb                                 10000        
+lo103                          iob                                 20000        
+lo104                          hsbc                                25000        
+lo105                          icic                                20000        
+lo106                          pnb                                 30000        
+lo107                          iob                                 35000        
+lo108                          hsbc                                10000        
+lo109                          icic                                15000        
+lo110                          pnb                                 20000        
+
+11 rows selected.
+
+SQL> update loan set brnach_name='icici' where loan_no='lo101';
+update loan set brnach_name='icici' where loan_no='lo101'
+                *
+ERROR at line 1:
+ORA-00904: "BRNACH_NAME": invalid identifier 
+
+
+SQL> update loan set branch_name='icici' where loan_no='lo101';
+
+0 rows updated.
+
+SQL> 
+SQL> update loan set branch_name='icici' where amount=15000;
+
+2 rows updated.
+
+SQL> select * from loan;
+
+LOAN_NO                        BRANCH_NAME                        AMOUNT        
+------------------------------ ------------------------------ ----------        
+lo100                          hsbc                                10000        
+lo101                          icici                               15000        
+lo102                          pnb                                 10000        
+lo103                          iob                                 20000        
+lo104                          hsbc                                25000        
+lo105                          icic                                20000        
+lo106                          pnb                                 30000        
+lo107                          iob                                 35000        
+lo108                          hsbc                                10000        
+lo109                          icici                               15000        
+lo110                          pnb                                 20000        
+
+11 rows selected.
+
+SQL> update loan set branch_name='icici' where loan_no='lo105';
+
+0 rows updated.
+
+SQL> update loan set branch_name='icici' where loan_no=lo105;
+update loan set branch_name='icici' where loan_no=lo105
+                                                  *
+ERROR at line 1:
+ORA-00904: "LO105": invalid identifier 
+
+
+SQL> select * from loan where loan_no='ln101';
+
+no rows selected
+
+SQL> select * from loan where loan_no='l0101';
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='icici' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select * from loan where branch_name='iob';
+
+no rows selected
+
+SQL> select * from depositor where customer_name='aditya';
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+
+SQL> select * from borrower where loan_no='l0101';
+
+no rows selected
+
+SQL> select * from  borrower;
+
+CUSTOMER_NAME                  LOAN_NO                                          
+------------------------------ ------------------------------                   
+aditya                         lo106                                            
+aman                           lo109                                            
+ankit                          lo107                                            
+ankita                         lo102                                            
+atif                           lo110                                            
+kadam                          lo108                                            
+kartik                         lo100                                            
+namya                          lo100                                            
+nitya                          lo102                                            
+raju                           lo103                                            
+rakesh                         lo104                                            
+
+CUSTOMER_NAME                  LOAN_NO                                          
+------------------------------ ------------------------------                   
+ramesh                         lo105                                            
+shweta                         lo101                                            
+
+13 rows selected.
+
+SQL> select * from borrower where loan_no='lo101';
+
+no rows selected
+
+SQL> select * from laon
+  2  
+SQL> 
+SQL> slect * from laon;
+SP2-0734: unknown command beginning "slect * fr..." - rest of line ignored.
+SQL> slect * from loan;
+SP2-0734: unknown command beginning "slect * fr..." - rest of line ignored.
+SQL> select * from laon;
+select * from laon
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from loan;
+
+LOAN_NO                        BRANCH_NAME                        AMOUNT        
+------------------------------ ------------------------------ ----------        
+lo100                          hsbc                                10000        
+lo101                          icici                               15000        
+lo102                          pnb                                 10000        
+lo103                          iob                                 20000        
+lo104                          hsbc                                25000        
+lo105                          icic                                20000        
+lo106                          pnb                                 30000        
+lo107                          iob                                 35000        
+lo108                          hsbc                                10000        
+lo109                          icici                               15000        
+lo110                          pnb                                 20000        
+
+11 rows selected.
+
+SQL> select * from borrower where  loan_no='lo100';
+
+no rows selected
+
+SQL> slect * from borrower;
+SP2-0734: unknown command beginning "slect * fr..." - rest of line ignored.
+SQL> select * from borrower;
+
+CUSTOMER_NAME                  LOAN_NO                                          
+------------------------------ ------------------------------                   
+aditya                         lo106                                            
+aman                           lo109                                            
+ankit                          lo107                                            
+ankita                         lo102                                            
+atif                           lo110                                            
+kadam                          lo108                                            
+kartik                         lo100                                            
+namya                          lo100                                            
+nitya                          lo102                                            
+raju                           lo103                                            
+rakesh                         lo104                                            
+
+CUSTOMER_NAME                  LOAN_NO                                          
+------------------------------ ------------------------------                   
+ramesh                         lo105                                            
+shweta                         lo101                                            
+
+13 rows selected.
+
+SQL> 
+SQL> drop table loan;
+
+Table dropped.
+
+SQL> create table laSQL> create table loan (loan_no char(20), branch_name char(20),
+  2  create table laSQL> create table loan (loan_no char(20), branch_name char(20),
+  3  
+SQL> 
+SQL> create table loan (loan_no varchar(20), branch_name varchar(20),
+  2  amount numeric(12,2),primary key(loan_no));
+
+Table created.
+
+SQL> insert into loan values('&loan_no','&branch_name',&amount);
+Enter value for loan_no: lo100
+Enter value for branch_name: hsbc
+Enter value for amount: 10000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo100','hsbc',10000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo101
+Enter value for branch_name: icici
+Enter value for amount: 15000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo101','icici',15000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo102
+Enter value for branch_name: pnb
+Enter value for amount: 10000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo102','pnb',10000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo103
+Enter value for branch_name: iob
+Enter value for amount: 20000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo103','iob',20000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo104
+Enter value for branch_name: hsbc
+Enter value for amount: 25000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo104','hsbc',25000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo105
+Enter value for branch_name: icici
+Enter value for amount: 20000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo105','icici',20000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo106
+Enter value for branch_name: pnb
+Enter value for amount: 30000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo106','pnb',30000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo107
+Enter value for branch_name: iob
+Enter value for amount: 35000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo107','iob',35000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo108
+Enter value for branch_name: hsbc
+Enter value for amount: 10000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo108','hsbc',10000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo109
+Enter value for branch_name: icici
+Enter value for amount: 15000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo109','icici',15000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo110
+Enter value for branch_name: pnb
+Enter value for amount: 20000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo110','pnb',20000)
+
+1 row created.
+
+SQL> select * from laon;
+select * from laon
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from loan;
+
+LOAN_NO              BRANCH_NAME              AMOUNT                            
+-------------------- -------------------- ----------                            
+lo100                hsbc                      10000                            
+lo101                icici                     15000                            
+lo102                pnb                       10000                            
+lo103                iob                       20000                            
+lo104                hsbc                      25000                            
+lo105                icici                     20000                            
+lo106                pnb                       30000                            
+lo107                iob                       35000                            
+lo108                hsbc                      10000                            
+lo109                icici                     15000                            
+lo110                pnb                       20000                            
+
+11 rows selected.
+
+SQL> create table borrower (customer_name char(20), loan_no
+  2  
+SQL> create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name, loan));
+create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name, loan))
+                                                                                                  *
+ERROR at line 1:
+ORA-00904: "LOAN": invalid identifier 
+
+
+SQL> create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name,loan));
+create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name,loan))
+                                                                                                 *
+ERROR at line 1:
+ORA-00904: "LOAN": invalid identifier 
+
+
+SQL> create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name,loan_no));
+create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name,loan_no))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name,loan_no));
+create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name,loan_no))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> drop table borrower;
+
+Table dropped.
+
+SQL> create table borrower (customer_name varchar(20), loan_no varchar(20), primary key(customer_name,loan_no));
+
+Table created.
+
+SQL> insert into borrower values('&customer_name','&loan_no');
+Enter value for customer_name: aditya
+Enter value for loan_no: lo106
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('aditya','lo106')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: aman
+Enter value for loan_no: lo109
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('aman','lo109')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: ankit
+Enter value for loan_no: lo107
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('ankit','lo107')
+
+1 row created.
+
+SQL> ankita
+SP2-0042: unknown command "ankita" - rest of line ignored.
+SQL> /
+Enter value for customer_name: ankital
+Enter value for loan_no: 
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('ankital','')
+insert into borrower values('ankital','')
+                                      *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("NANDU"."BORROWER"."LOAN_NO") 
+
+
+SQL> /
+Enter value for customer_name: ankita
+Enter value for loan_no: lo102
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('ankita','lo102')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: atif
+Enter value for loan_no: lo110
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('atif','lo110')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: kadam
+Enter value for loan_no: lo108
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('kadam','lo108')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: kartik
+Enter value for loan_no: lo1000
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('kartik','lo1000')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: namya
+Enter value for loan_no: lo100
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('namya','lo100')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: nitya
+Enter value for loan_no: lo102
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('nitya','lo102')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: raju
+Enter value for loan_no: lo103
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('raju','lo103')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: rakesh
+Enter value for loan_no: lo104
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('rakesh','lo104')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: ramesh
+Enter value for loan_no: lo105
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('ramesh','lo105')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: shweta
+Enter value for loan_no: lo101
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('shweta','lo101')
+
+1 row created.
+
+SQL> select * from borrower;
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+aditya               lo106                                                      
+aman                 lo109                                                      
+ankit                lo107                                                      
+ankita               lo102                                                      
+atif                 lo110                                                      
+kadam                lo108                                                      
+kartik               lo1000                                                     
+namya                lo100                                                      
+nitya                lo102                                                      
+raju                 lo103                                                      
+rakesh               lo104                                                      
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+ramesh               lo105                                                      
+shweta               lo101                                                      
+
+13 rows selected.
+
+SQL> select * from loan where loan_no='lo106';
+
+LOAN_NO              BRANCH_NAME              AMOUNT                            
+-------------------- -------------------- ----------                            
+lo106                pnb                       30000                            
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='icici' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='pnb' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='hdfc' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='hsbc' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct customer_name from borrower where
+  2  customer_name in (select customer_name from depositor);
+
+CUSTOMER_NAME                                                                   
+--------------------                                                            
+aditya                                                                          
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10001                                            
+astha                          10002                                            
+atif                           10005                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+18 rows selected.
+
+SQL> select * from account;
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10001      icici                 1000                                           
+10002      sbi                   1500                                           
+10003      hdfc                  2000                                           
+10004      hsbc                  2500                                           
+10005      icici                 3000                                           
+10006      sbi                   3500                                           
+10007      hdfc                  4000                                           
+10008      hsbc                  4500                                           
+10009      icici                 5000                                           
+10010      sbi                   5500                                           
+10011      sbi                   5000                                           
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10012      hsbc                  4500                                           
+10013      icici                 3300                                           
+10015      sbi                                                                  
+
+14 rows selected.
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='sbi' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select account_no from account where balance not between 1000
+  2  
+SQL> and 5000;
+SP2-0042: unknown command "and 5000" - rest of line ignored.
+SQL> select account_no from account where balance not between 1000 and 5000;
+
+ACCOUNT_NO                                                                      
+----------                                                                      
+10010                                                                           
+
+SQL> select borrower.customer_name, avg(amount) from borrower, loan,
+  2  
+SQL> customer where borrower.loan_no=loan.loan_no and
+SP2-0734: unknown command beginning "customer w..." - rest of line ignored.
+SQL> borrower.customer_name=customer.customer_name and
+SP2-0734: unknown command beginning "borrower.c..." - rest of line ignored.
+SQL> customer_city=`madurai' group by borrower.customer_name having
+SP2-0734: unknown command beginning "customer_c..." - rest of line ignored.
+SQL> select borrower.customer_name, avg(amount) from borrower, loan,customer where borrower.loan_no=loan.loan_no and borrower.customer_name=customer.customer_name and customer_city='madurai' group by borrower.customer_name having count(distinct borrower.loan_no)>=2;
+
+no rows selected
+
+SQL> select borrower.customer_name, avg(amount) from borrower, loan,customer where borrower.loan_no=loan.loan_no and borrower.customer_name=customer.customer_name and customer_city='madurai' group by borrower.customer_name having count(distinct borrower.loan_no)>=1;
+
+no rows selected
+
+SQL> select borrower.customer_name, avg(amount) from borrower, loan,customer where borrower.loan_no=loan.loan_no and borrower.customer_name=customer.customer_name and customer_city='madurai' group by borrower.customer_name having count(distinct borrower.loan_no)>=0;
+
+no rows selected
+
+SQL> select * from borrower;
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+aditya               lo106                                                      
+aman                 lo109                                                      
+ankit                lo107                                                      
+ankita               lo102                                                      
+atif                 lo110                                                      
+kadam                lo108                                                      
+kartik               lo1000                                                     
+namya                lo100                                                      
+nitya                lo102                                                      
+raju                 lo103                                                      
+rakesh               lo104                                                      
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+ramesh               lo105                                                      
+shweta               lo101                                                      
+
+13 rows selected.
+
+SQL> insert into borrower values ('&customer_name','&loan_no');
+Enter value for customer_name: aditya
+Enter value for loan_no: lo109
+old   1: insert into borrower values ('&customer_name','&loan_no')
+new   1: insert into borrower values ('aditya','lo109')
+
+1 row created.
+
+SQL> select borrower.customer_name, avg(amount) from borrower, loan,customer where borrower.loan_no=loan.loan_no and borrower.customer_name=customer.customer_name and customer_city='madurai' group by borrower.customer_name having count(distinct borrower.loan_no)>=2;
+
+no rows selected
+
+SQL> select borrower.customer_name, avg(amount) from borrower, loan,customer where borrower.loan_no=loan.loan_no and borrower.customer_name=customer.customer_name and customer_city='mardurai' group by borrower.customer_name having count(distinct borrower.loan_no)>=2;
+
+CUSTOMER_NAME        AVG(AMOUNT)                                                
+-------------------- -----------                                                
+aditya                     22500                                                
+
+SQL> select * from  depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10001                                            
+astha                          10002                                            
+atif                           10005                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+18 rows selected.
+
+SQL> select * from account;
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10001      icici                 1000                                           
+10002      sbi                   1500                                           
+10003      hdfc                  2000                                           
+10004      hsbc                  2500                                           
+10005      icici                 3000                                           
+10006      sbi                   3500                                           
+10007      hdfc                  4000                                           
+10008      hsbc                  4500                                           
+10009      icici                 5000                                           
+10010      sbi                   5500                                           
+10011      sbi                   5000                                           
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10012      hsbc                  4500                                           
+10013      icici                 3300                                           
+10015      sbi                                                                  
+
+14 rows selected.
+
+SQL> slect * from depositor;
+SP2-0734: unknown command beginning "slect * fr..." - rest of line ignored.
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10001                                            
+astha                          10002                                            
+atif                           10005                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+18 rows selected.
+
+SQL> select distinct customer_name from borrower,loan where
+  2  borrower.loan_no=loan.loan_no and branch_name=`pnb' and
+  3  (branch_name,customer_name) in (select branch_name,
+  4  customer_name from depositor, account where
+  5  depositor.account_no=account.account_no);
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> select borrower.customer_name, avg(amount) from borrower, loan,customer where borrower.loan_no=loan.loan_no and borrower.customer_name=customer.customer_name and customer_city='madurai' group by borrower.customer_name having count(distinct borrower.loan_no)>=2;
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='hdfc' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select *  from account;
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10001      icici                 1000                                           
+10002      sbi                   1500                                           
+10003      hdfc                  2000                                           
+10004      hsbc                  2500                                           
+10005      icici                 3000                                           
+10006      sbi                   3500                                           
+10007      hdfc                  4000                                           
+10008      hsbc                  4500                                           
+10009      icici                 5000                                           
+10010      sbi                   5500                                           
+10011      sbi                   5000                                           
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10012      hsbc                  4500                                           
+10013      icici                 3300                                           
+10015      sbi                                                                  
+
+14 rows selected.
+
+SQL> select * fron loan;
+select * fron loan
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='icici' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10001                                            
+astha                          10002                                            
+atif                           10005                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+18 rows selected.
+
+SQL> select * from borrower;
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+aditya               lo106                                                      
+aditya               lo109                                                      
+aman                 lo109                                                      
+ankit                lo107                                                      
+ankita               lo102                                                      
+atif                 lo110                                                      
+kadam                lo108                                                      
+kartik               lo1000                                                     
+namya                lo100                                                      
+nitya                lo102                                                      
+raju                 lo103                                                      
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+rakesh               lo104                                                      
+ramesh               lo105                                                      
+shweta               lo101                                                      
+
+14 rows selected.
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='icici' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='sbi' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select * from laon;
+select * from laon
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from loan;
+
+LOAN_NO              BRANCH_NAME              AMOUNT                            
+-------------------- -------------------- ----------                            
+lo100                hsbc                      10000                            
+lo101                icici                     15000                            
+lo102                pnb                       10000                            
+lo103                iob                       20000                            
+lo104                hsbc                      25000                            
+lo105                icici                     20000                            
+lo106                pnb                       30000                            
+lo107                iob                       35000                            
+lo108                hsbc                      10000                            
+lo109                icici                     15000                            
+lo110                pnb                       20000                            
+
+11 rows selected.
+
+SQL> update loan set branch_name='icici' where loan_no='lo106';
+
+1 row updated.
+
+SQL> select distinct customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='icici' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL> select  customer_name from borrower,loan where borrower.loan_no=loan.loan_no and branch_name='icici' and (branch_name,customer_name) in (select branch_name, customer_name from depositor, account where depositor.account_no=account.account_no);
+
+no rows selected
+
+SQL>   select distinct customer_name from borrower where
+  2  
+SQL>   select distinct customer_name from borrower where customer_name not in(select customer_name from depositor);
+
+CUSTOMER_NAME                                                                   
+--------------------                                                            
+raju                                                                            
+atif                                                                            
+nitya                                                                           
+ankit                                                                           
+namya                                                                           
+ramesh                                                                          
+shweta                                                                          
+aman                                                                            
+kadam                                                                           
+kartik                                                                          
+rakesh                                                                          
+
+CUSTOMER_NAME                                                                   
+--------------------                                                            
+ankita                                                                          
+
+12 rows selected.
+
+SQL> 

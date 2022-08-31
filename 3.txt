@@ -1,0 +1,154 @@
+SQL> select abs(-65) from dual;
+
+  ABS(-65)                                                                      
+----------                                                                      
+        65                                                                      
+
+SQL> selsect ceil (balance)"ceil(88.9)" from account where balance between 500 and 20000;
+SP2-0734: unknown command beginning "selsect ce..." - rest of line ignored.
+SQL> select ceil (balance)"ceil(88.9)" from account where balance between 500 and 20000;
+
+ceil(88.9)                                                                      
+----------                                                                      
+      1000                                                                      
+      1500                                                                      
+      2000                                                                      
+      2500                                                                      
+      3000                                                                      
+      3500                                                                      
+      4000                                                                      
+      4500                                                                      
+      5000                                                                      
+      5500                                                                      
+
+10 rows selected.
+
+SQL> select floor (balance) ceil(88.9) from account where balance between 500 and 20000;
+select floor (balance) ceil(88.9) from account where balance between 500 and 20000
+                           *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select floor (balance),ceil(88.9) from account where balance between 500 and 20000;
+
+FLOOR(BALANCE) CEIL(88.9)                                                       
+-------------- ----------                                                       
+          1000         89                                                       
+          1500         89                                                       
+          2000         89                                                       
+          2500         89                                                       
+          3000         89                                                       
+          3500         89                                                       
+          4000         89                                                       
+          4500         89                                                       
+          5000         89                                                       
+          5500         89                                                       
+
+10 rows selected.
+
+SQL> select mod(200,30) from dual;
+
+MOD(200,30)                                                                     
+-----------                                                                     
+         20                                                                     
+
+SQL> select balance,power (balance,2)from account where acoount_no'10001';
+select balance,power (balance,2)from account where acoount_no'10001'
+                                                             *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select balance,power (balance,2)from account where acoount_no='10001';
+select balance,power (balance,2)from account where acoount_no='10001'
+                                                   *
+ERROR at line 1:
+ORA-00904: "ACOOUNT_NO": invalid identifier 
+
+
+SQL> select balance,power (balance,2)from account where account_no='10001';
+
+   BALANCE POWER(BALANCE,2)                                                     
+---------- ----------------                                                     
+      1000          1000000                                                     
+
+SQL> select balance-1500,power (balance-1500)from account where account_no='10001';
+select balance-1500,power (balance-1500)from account where account_no='10001'
+                    *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select balance-1500,sign(balance-1500)from account where account_no='10001';
+
+BALANCE-1500 SIGN(BALANCE-1500)                                                 
+------------ ------------------                                                 
+        -500                 -1                                                 
+
+SQL> select balance,sqrt(balance)from account where account_no='10001';
+
+   BALANCE SQRT(BALANCE)                                                        
+---------- -------------                                                        
+      1000    31.6227766                                                        
+
+SQL> select balance,trunc(sqrt(balance),2) trunc(sqrt(balance)) trunc(sqrt(balance),-2)from account where branch_name='hsbsc';
+select balance,trunc(sqrt(balance),2) trunc(sqrt(balance)) trunc(sqrt(balance),-2)from account where branch_name='hsbsc'
+                                           *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select balance,trunc(sqrt(balance),2) trunc(sqrt(balance),2),trunc(sqrt(balance))from account where branch_name='hsbsc';
+select balance,trunc(sqrt(balance),2) trunc(sqrt(balance),2),trunc(sqrt(balance))from account where branch_name='hsbsc'
+                                           *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select balance,trunc(sqrt(balance),2),trunc(sqrt(balance),2),trunc(sqrt(balance))from account where branch_name='hsbsc';
+
+no rows selected
+
+SQL> select balance,trunc(sqrt(balance),2),trunc(sqrt(balance),2),trunc(sqrt(balance))from account where branch_name='sbi';
+
+   BALANCE TRUNC(SQRT(BALANCE),2) TRUNC(SQRT(BALANCE),2) TRUNC(SQRT(BALANCE))   
+---------- ---------------------- ---------------------- --------------------   
+      1500                  38.72                  38.72                   38   
+      3500                  59.16                  59.16                   59   
+      5500                  74.16                  74.16                   74   
+
+SQL> select balance,round(sqrt(balance),2),round(sqrt(balance),2),round(sqrt(balance),-2)round(sqrt(balance))from account where branch_name='sbi';
+select balance,round(sqrt(balance),2),round(sqrt(balance),2),round(sqrt(balance),-2)round(sqrt(balance))from account where branch_name='sbi'
+                                                                                         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select balance,round(sqrt(balance),2),round(sqrt(balance),2),round(sqrt(balance),-2),round(sqrt(balance))from account where branch_name='sbi';
+
+   BALANCE ROUND(SQRT(BALANCE),2) ROUND(SQRT(BALANCE),2) ROUND(SQRT(BALANCE),-2)
+---------- ---------------------- ---------------------- -----------------------
+ROUND(SQRT(BALANCE))                                                            
+--------------------                                                            
+      1500                  38.73                  38.73                       0
+                  39                                                            
+                                                                                
+      3500                  59.16                  59.16                     100
+                  59                                                            
+                                                                                
+      5500                  74.16                  74.16                     100
+                  74                                                            
+                                                                                
+
+SQL> select exp(4) from dual;
+
+    EXP(4)                                                                      
+----------                                                                      
+  54.59815                                                                      
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

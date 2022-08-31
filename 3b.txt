@@ -1,0 +1,157 @@
+SQL> select chr(37)a,chr(100)b,chr(101) c from dual;
+
+A B C                                                                           
+- - -                                                                           
+% d e                                                                           
+
+SQL> select concat('sachin','tendulkar')from dual;
+
+CONCAT('SACHIN'                                                                 
+---------------                                                                 
+sachintendulkar                                                                 
+
+SQL> select concat(customer_name,customer_city)from customer;
+
+CONCAT(CUSTOMER_NAME,CUSTOMER_CITY)                                             
+--------------------------------------------------                              
+aditya              mardurai                                                    
+ankit               mardurai                                                    
+kadam               mardurai                                                    
+aman                salem                                                       
+atif                trichy                                                      
+namya               ahemdabad                                                   
+nitya               ahemdabad                                                   
+akshit              trichy                                                      
+shwet               salem                                                       
+akshil              trichy                                                      
+anshul              mardurai                                                    
+
+CONCAT(CUSTOMER_NAME,CUSTOMER_CITY)                                             
+--------------------------------------------------                              
+astha               salem                                                       
+amish               ahemdabad                                                   
+freya               trichy                                                      
+manish              salem                                                       
+faizaan             mardurai                                                    
+
+16 rows selected.
+
+SQL> select initcap(customer_name)from customer;
+
+INITCAP(CUSTOMER_NAM                                                            
+--------------------                                                            
+Aditya                                                                          
+Akshil                                                                          
+Akshit                                                                          
+Aman                                                                            
+Amish                                                                           
+Ankit                                                                           
+Anshul                                                                          
+Astha                                                                           
+Atif                                                                            
+Faizaan                                                                         
+Freya                                                                           
+
+INITCAP(CUSTOMER_NAM                                                            
+--------------------                                                            
+Kadam                                                                           
+Manish                                                                          
+Namya                                                                           
+Nitya                                                                           
+Shwet                                                                           
+
+16 rows selected.
+
+SQL> select concat(customer_name,customer_city) from customer;
+
+CONCAT(CUSTOMER_NAME,CUSTOMER_CITY)                                             
+--------------------------------------------------                              
+aditya              mardurai                                                    
+ankit               mardurai                                                    
+kadam               mardurai                                                    
+aman                salem                                                       
+atif                trichy                                                      
+namya               ahemdabad                                                   
+nitya               ahemdabad                                                   
+akshit              trichy                                                      
+shwet               salem                                                       
+akshil              trichy                                                      
+anshul              mardurai                                                    
+
+CONCAT(CUSTOMER_NAME,CUSTOMER_CITY)                                             
+--------------------------------------------------                              
+astha               salem                                                       
+amish               ahemdabad                                                   
+freya               trichy                                                      
+manish              salem                                                       
+faizaan             mardurai                                                    
+
+16 rows selected.
+
+SQL> select lower(customer_name),initcap(customer_name) from customer;
+
+LOWER(CUSTOMER_NAME) INITCAP(CUSTOMER_NAM                                       
+-------------------- --------------------                                       
+aditya               Aditya                                                     
+akshil               Akshil                                                     
+akshit               Akshit                                                     
+aman                 Aman                                                       
+amish                Amish                                                      
+ankit                Ankit                                                      
+anshul               Anshul                                                     
+astha                Astha                                                      
+atif                 Atif                                                       
+faizaan              Faizaan                                                    
+freya                Freya                                                      
+
+LOWER(CUSTOMER_NAME) INITCAP(CUSTOMER_NAM                                       
+-------------------- --------------------                                       
+kadam                Kadam                                                      
+manish               Manish                                                     
+namya                Namya                                                      
+nitya                Nitya                                                      
+shwet                Shwet                                                      
+
+16 rows selected.
+
+SQL> select upper(customer_name), lower(customer_name), initcap
+  2  
+SQL> select upper(customer_name), lower(customer_name), initcap(customer_name) from customer;
+
+UPPER(CUSTOMER_NAME) LOWER(CUSTOMER_NAME) INITCAP(CUSTOMER_NAM                  
+-------------------- -------------------- --------------------                  
+ADITYA               aditya               Aditya                                
+AKSHIL               akshil               Akshil                                
+AKSHIT               akshit               Akshit                                
+AMAN                 aman                 Aman                                  
+AMISH                amish                Amish                                 
+ANKIT                ankit                Ankit                                 
+ANSHUL               anshul               Anshul                                
+ASTHA                astha                Astha                                 
+ATIF                 atif                 Atif                                  
+FAIZAAN              faizaan              Faizaan                               
+FREYA                freya                Freya                                 
+
+UPPER(CUSTOMER_NAME) LOWER(CUSTOMER_NAME) INITCAP(CUSTOMER_NAM                  
+-------------------- -------------------- --------------------                  
+KADAM                kadam                Kadam                                 
+MANISH               manish               Manish                                
+NAMYA                namya                Namya                                 
+NITYA                nitya                Nitya                                 
+SHWET                shwet                Shwet                                 
+
+16 rows selected.
+
+SQL> 
+SQL> COMM
+SP2-0042: unknown command "COMM" - rest of line ignored.
+SQL> 
+SQL> 
+SQL> 
+SQL> COMMIIT
+SP2-0042: unknown command "COMMIIT" - rest of line ignored.
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> spool off

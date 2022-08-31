@@ -1,0 +1,428 @@
+SQL> select balance, lpad(balance,10,'$') from account where branch_name='iob';
+
+no rows selected
+
+SQL> select balance, lpad(balance,10,'$') from account where branch_name='sbi';
+
+   BALANCE LPAD(BALAN                                                           
+---------- ----------                                                           
+      1500 $$$$$$1500                                                           
+      3500 $$$$$$3500                                                           
+      5500 $$$$$$5500                                                           
+
+SQL> select balance, lpad(balance,10,'$'),rpad(balance,10,'$') from account where branch_name='sbi';
+
+   BALANCE LPAD(BALAN RPAD(BALAN                                                
+---------- ---------- ----------                                                
+      1500 $$$$$$1500 1500$$$$$$                                                
+      3500 $$$$$$3500 3500$$$$$$                                                
+      5500 $$$$$$5500 5500$$$$$$                                                
+
+SQL> select customer_name, ltrim(customer_name),ltrim(customer_name,'r') from customer;
+
+CUSTOMER_NAME        LTRIM(CUSTOMER_NAME) LTRIM(CUSTOMER_NAME,                  
+-------------------- -------------------- --------------------                  
+aditya               aditya               aditya                                
+akshil               akshil               akshil                                
+akshit               akshit               akshit                                
+aman                 aman                 aman                                  
+amish                amish                amish                                 
+ankit                ankit                ankit                                 
+anshul               anshul               anshul                                
+astha                astha                astha                                 
+atif                 atif                 atif                                  
+faizaan              faizaan              faizaan                               
+freya                freya                freya                                 
+
+CUSTOMER_NAME        LTRIM(CUSTOMER_NAME) LTRIM(CUSTOMER_NAME,                  
+-------------------- -------------------- --------------------                  
+kadam                kadam                kadam                                 
+manish               manish               manish                                
+namya                namya                namya                                 
+nitya                nitya                nitya                                 
+shwet                shwet                shwet                                 
+
+16 rows selected.
+
+SQL> select customer_name, rtrim(customer_name),rtrim(customer_name,' m')from customer;;
+select customer_name, rtrim(customer_name),rtrim(customer_name,' m')from customer;
+                                                                                 *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select customer_name, rtrim(customer_name),rtrim(customer_name,' m')from customer;
+
+CUSTOMER_NAME        RTRIM(CUSTOMER_NAME) RTRIM(CUSTOMER_NAME,                  
+-------------------- -------------------- --------------------                  
+aditya               aditya               aditya                                
+akshil               akshil               akshil                                
+akshit               akshit               akshit                                
+aman                 aman                 aman                                  
+amish                amish                amish                                 
+ankit                ankit                ankit                                 
+anshul               anshul               anshul                                
+astha                astha                astha                                 
+atif                 atif                 atif                                  
+faizaan              faizaan              faizaan                               
+freya                freya                freya                                 
+
+CUSTOMER_NAME        RTRIM(CUSTOMER_NAME) RTRIM(CUSTOMER_NAME,                  
+-------------------- -------------------- --------------------                  
+kadam                kadam                kada                                  
+manish               manish               manish                                
+namya                namya                namya                                 
+nitya                nitya                nitya                                 
+shwet                shwet                shwet                                 
+
+16 rows selected.
+
+SQL> select customer_name,replace(customer_name,'e','x') from
+  2  
+SQL> select customer_name,replace(customer_name,'e','x') from customer;
+
+CUSTOMER_NAME        REPLACE(CUSTOMER_NAM                                       
+-------------------- --------------------                                       
+aditya               aditya                                                     
+akshil               akshil                                                     
+akshit               akshit                                                     
+aman                 aman                                                       
+amish                amish                                                      
+ankit                ankit                                                      
+anshul               anshul                                                     
+astha                astha                                                      
+atif                 atif                                                       
+faizaan              faizaan                                                    
+freya                frxya                                                      
+
+CUSTOMER_NAME        REPLACE(CUSTOMER_NAM                                       
+-------------------- --------------------                                       
+kadam                kadam                                                      
+manish               manish                                                     
+namya                namya                                                      
+nitya                nitya                                                      
+shwet                shwxt                                                      
+
+16 rows selected.
+
+SQL> select customer_name, substr(customer_name,2,4),substr(customer_name,4) from customer;
+
+CUSTOMER_NAME        SUBS SUBSTR(CUSTOMER_N                                     
+-------------------- ---- -----------------                                     
+aditya               dity tya                                                   
+akshil               kshi hil                                                   
+akshit               kshi hit                                                   
+aman                 man  n                                                     
+amish                mish sh                                                    
+ankit                nkit it                                                    
+anshul               nshu hul                                                   
+astha                stha ha                                                    
+atif                 tif  f                                                     
+faizaan              aiza zaan                                                  
+freya                reya ya                                                    
+
+CUSTOMER_NAME        SUBS SUBSTR(CUSTOMER_N                                     
+-------------------- ---- -----------------                                     
+kadam                adam am                                                    
+manish               anis ish                                                   
+namya                amya ya                                                    
+nitya                itya ya                                                    
+shwet                hwet et                                                    
+
+16 rows selected.
+
+SQL> select translate('abcdefghij','abcdef','12345') from dual;
+
+TRANSLATE                                                                       
+---------                                                                       
+12345ghij                                                                       
+
+SQL> select translate('abcd','abcd','1') from dual;
+
+T                                                                               
+-                                                                               
+1                                                                               
+
+SQL> select customer_name, translate(customer_name,'e',1) from
+  2  
+SQL> select customer_name, translate(customer_name,'e',1) from customer;
+
+CUSTOMER_NAME        TRANSLATE(CUSTOMER_N                                       
+-------------------- --------------------                                       
+aditya               aditya                                                     
+akshil               akshil                                                     
+akshit               akshit                                                     
+aman                 aman                                                       
+amish                amish                                                      
+ankit                ankit                                                      
+anshul               anshul                                                     
+astha                astha                                                      
+atif                 atif                                                       
+faizaan              faizaan                                                    
+freya                fr1ya                                                      
+
+CUSTOMER_NAME        TRANSLATE(CUSTOMER_N                                       
+-------------------- --------------------                                       
+kadam                kadam                                                      
+manish               manish                                                     
+namya                namya                                                      
+nitya                nitya                                                      
+shwet                shw1t                                                      
+
+16 rows selected.
+
+SQL> select customer_name, soundex(customer_name) from customer;
+
+CUSTOMER_NAME        SOUN                                                       
+-------------------- ----                                                       
+aditya               A330                                                       
+akshil               A240                                                       
+akshit               A230                                                       
+aman                 A550                                                       
+amish                A520                                                       
+ankit                A523                                                       
+anshul               A524                                                       
+astha                A230                                                       
+atif                 A310                                                       
+faizaan              F250                                                       
+freya                F600                                                       
+
+CUSTOMER_NAME        SOUN                                                       
+-------------------- ----                                                       
+kadam                K350                                                       
+manish               M520                                                       
+namya                N500                                                       
+nitya                N300                                                       
+shwet                S300                                                       
+
+16 rows selected.
+
+SQL> select ascii('a') from dual;
+
+ASCII('A')                                                                      
+----------                                                                      
+        97                                                                      
+
+SQL> select ascii('a') from dual;
+
+ASCII('A')                                                                      
+----------                                                                      
+        97                                                                      
+
+SQL> select ascii('A') from dual;
+
+ASCII('A')                                                                      
+----------                                                                      
+        65                                                                      
+
+SQL> select customer_name,instr(customer_name,'e') from customer;
+
+CUSTOMER_NAME        INSTR(CUSTOMER_NAME,'E')                                   
+-------------------- ------------------------                                   
+aditya                                      0                                   
+akshil                                      0                                   
+akshit                                      0                                   
+aman                                        0                                   
+amish                                       0                                   
+ankit                                       0                                   
+anshul                                      0                                   
+astha                                       0                                   
+atif                                        0                                   
+faizaan                                     0                                   
+freya                                       3                                   
+
+CUSTOMER_NAME        INSTR(CUSTOMER_NAME,'E')                                   
+-------------------- ------------------------                                   
+kadam                                       0                                   
+manish                                      0                                   
+namya                                       0                                   
+nitya                                       0                                   
+shwet                                       4                                   
+
+16 rows selected.
+
+SQL> select instrb('corporate floor','or',5,2) from dual ;
+
+INSTRB('CORPORATEFLOOR','OR',5,2)                                               
+---------------------------------                                               
+                               14                                               
+
+SQL> select instrb('corporate floor','or',5,2) from dual ;
+
+INSTRB('CORPORATEFLOOR','OR',5,2)                                               
+---------------------------------                                               
+                               14                                               
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+02-AUG-19                                                                       
+
+SQL> select add_months('30jan08',5) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+30-JUN-08                                                                       
+
+SQL> select round(to_date('12jan08'),'mm') from dual;
+
+ROUND(TO_                                                                       
+---------                                                                       
+01-JAN-08                                                                       
+
+SQL> select trunc(to_date('27-oct-08','dd-mm-yyy') ,'year')from dual;
+
+TRUNC(TO_                                                                       
+---------                                                                       
+01-JAN-08                                                                       
+
+SQL> select months_between('12jan08','12jan09') from dual;
+
+MONTHS_BETWEEN('12JAN08','12JAN09')                                             
+-----------------------------------                                             
+                                -12                                             
+
+SQL> select sysdate,last_day(sysdate) from dual;
+
+SYSDATE   LAST_DAY(                                                             
+--------- ---------                                                             
+02-AUG-19 31-AUG-19                                                             
+
+SQL> select sysdate,next_day(sysdate,'wednesday') from dual;
+
+SYSDATE   NEXT_DAY(                                                             
+--------- ---------                                                             
+02-AUG-19 07-AUG-19                                                             
+
+SQL> select sysdate,to_char(sysdate,'day')from dual;
+
+SYSDATE   TO_CHAR(S                                                             
+--------- ---------                                                             
+02-AUG-19 friday                                                                
+
+SQL> select to_char(to_date('12jan08'),'rm') from dual;
+
+TO_C                                                                            
+----                                                                            
+i                                                                               
+
+SQL> select greatest(10,'7',-1) from dual;
+
+GREATEST(10,'7',-1)                                                             
+-------------------                                                             
+                 10                                                             
+
+SQL> select least('abcd','abcd','a','xyz') from dual;
+
+L                                                                               
+-                                                                               
+a                                                                               
+
+SQL> select account_no,balance+100,nvl(balance+100,0) from account
+  2  
+SQL> where branch_name='sbi';
+SP2-0734: unknown command beginning "where bran..." - rest of line ignored.
+SQL> select account_no,balance+100,nvl(balance+100,0) from account where branch_name='sbi';
+
+ACCOUNT_NO BALANCE+100 NVL(BALANCE+100,0)                                       
+---------- ----------- ------------------                                       
+10002             1600               1600                                       
+10006             3600               3600                                       
+10010             5600               5600                                       
+
+SQL> select customer_name, translate(customer_name, `e', `1') from
+  2  
+SQL> select customer_name, translate(customer_name, `e', `1') from customer;
+select customer_name, translate(customer_name, `e', `1') from customer
+                                               *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select customer_name, translate(customer_name,'e', '1') from customer;
+
+CUSTOMER_NAME        TRANSLATE(CUSTOMER_N                                       
+-------------------- --------------------                                       
+aditya               aditya                                                     
+akshil               akshil                                                     
+akshit               akshit                                                     
+aman                 aman                                                       
+amish                amish                                                      
+ankit                ankit                                                      
+anshul               anshul                                                     
+astha                astha                                                      
+atif                 atif                                                       
+faizaan              faizaan                                                    
+freya                fr1ya                                                      
+
+CUSTOMER_NAME        TRANSLATE(CUSTOMER_N                                       
+-------------------- --------------------                                       
+kadam                kadam                                                      
+manish               manish                                                     
+namya                namya                                                      
+nitya                nitya                                                      
+shwet                shw1t                                                      
+
+16 rows selected.
+
+SQL> select branch_name, branch_city, decode(branch_city, `madurai',
+  2  `usa', `trichy', `uk', branch_city) from branch;
+select branch_name, branch_city, decode(branch_city, `madurai',
+                                                     *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select branch_name, branch_city, decode(branch_city, `madurai',
+  2  select account_no,balance+100,nvl(balance+100,0) from account'
+  3  
+SQL> select branch_name, branch_city, decode(branch_city, `madurai',
+  2  `usa', `trichy', `uk', branch_city) from branch;
+select branch_name, branch_city, decode(branch_city, `madurai',
+                                                     *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select branch_name, branch_city, decode(branch_city, `mardurai',`usa', `trichy', `uk', branch_city) from branch;
+select branch_name, branch_city, decode(branch_city, `mardurai',`usa', `trichy', `uk', branch_city) from branch
+                                                     *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select branch_name, branch_city, decode(branch_city,'mardurai','usa', 'trichy', 'uk', branch_city) from branch;
+
+BRANCH_NAME     BRANCH_CITY                    DECODE(BRANCH_CITY,'MARDURAI',   
+--------------- ------------------------------ ------------------------------   
+icici           mardurai                       mardurai                         
+sbi             trichy                         trichy                           
+hdfc            salem                          salem                            
+hsbc            ahemdabad                      ahemdabad                        
+pnb             mumbai                         mumbai                           
+iob             chennai                        chennai                          
+
+6 rows selected.
+
+SQL> select uid from dual;
+
+       UID                                                                      
+----------                                                                      
+        91                                                                      
+
+SQL> select uid,user,userenv('language') from dual;
+
+       UID USER                                                                 
+---------- ------------------------------                                       
+USERENV('LANGUAGE')                                                             
+----------------------------------------------------                            
+        91 NANDU                                                                
+AMERICAN_AMERICA.WE8MSWIN1252                                                   
+                                                                                
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

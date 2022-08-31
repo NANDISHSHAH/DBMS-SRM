@@ -1,0 +1,1197 @@
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = `madurai' group bydepositor.customer_name having count(distinct depositor.account_no)>=3;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = `madurai' group bydepositor.customer_name having count(distinct depositor.account_no)>=3;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group bydepositor.customer_name having count(distinct depositor.account_no)>=3;
+select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group bydepositor.customer_name having count(distinct depositor.account_no)>=3
+                                                                                                                                                                                                                         *
+ERROR at line 1:
+ORA-00924: missing BY keyword 
+
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group by depositor.customer_name having count(distinct depositor.account_no)>=3;
+
+no rows selected
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10002                                            
+anshul                         10013                                            
+anshul                         10001                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+astha                          10002                                            
+atif                           10005                                            
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+20 rows selected.
+
+SQL> select * from customer;
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+aditya                                                                          
+sgroad                                                                          
+mardurai                                                                        
+                                                                                
+ankit                                                                           
+sgroad                                                                          
+mardurai                                                                        
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+kadam                                                                           
+sgroad                                                                          
+mardurai                                                                        
+                                                                                
+aman                                                                            
+pondscolony                                                                     
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+salem                                                                           
+                                                                                
+atif                                                                            
+aliroad                                                                         
+trichy                                                                          
+                                                                                
+namya                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+shyamal                                                                         
+ahemdabad                                                                       
+                                                                                
+nitya                                                                           
+gandhinagar                                                                     
+ahemdabad                                                                       
+                                                                                
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+akshit                                                                          
+satellite                                                                       
+trichy                                                                          
+                                                                                
+shwet                                                                           
+rastapa                                                                         
+salem                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+akshil                                                                          
+devracolony                                                                     
+trichy                                                                          
+                                                                                
+anshul                                                                          
+cgroad                                                                          
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+mardurai                                                                        
+                                                                                
+astha                                                                           
+rastepeh                                                                        
+salem                                                                           
+                                                                                
+amish                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+jivaraj                                                                         
+ahemdabad                                                                       
+                                                                                
+freya                                                                           
+ambavadi                                                                        
+trichy                                                                          
+                                                                                
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+manish                                                                          
+wasseypur                                                                       
+salem                                                                           
+                                                                                
+faizaan                                                                         
+potheri                                                                         
+mardurai                                                                        
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+
+16 rows selected.
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'trichy' group by depositor.customer_name having count(distinct depositor.account_no)>=1;
+
+no rows selected
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group by depositor.customer_name having count(distinct depositor.account_no)>=1;
+
+no rows selected
+
+SQL> select * from customer;
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+aditya                                                                          
+sgroad                                                                          
+mardurai                                                                        
+                                                                                
+ankit                                                                           
+sgroad                                                                          
+mardurai                                                                        
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+kadam                                                                           
+sgroad                                                                          
+mardurai                                                                        
+                                                                                
+aman                                                                            
+pondscolony                                                                     
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+salem                                                                           
+                                                                                
+atif                                                                            
+aliroad                                                                         
+trichy                                                                          
+                                                                                
+namya                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+shyamal                                                                         
+ahemdabad                                                                       
+                                                                                
+nitya                                                                           
+gandhinagar                                                                     
+ahemdabad                                                                       
+                                                                                
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+akshit                                                                          
+satellite                                                                       
+trichy                                                                          
+                                                                                
+shwet                                                                           
+rastapa                                                                         
+salem                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+akshil                                                                          
+devracolony                                                                     
+trichy                                                                          
+                                                                                
+anshul                                                                          
+cgroad                                                                          
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+mardurai                                                                        
+                                                                                
+astha                                                                           
+rastepeh                                                                        
+salem                                                                           
+                                                                                
+amish                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+jivaraj                                                                         
+ahemdabad                                                                       
+                                                                                
+freya                                                                           
+ambavadi                                                                        
+trichy                                                                          
+                                                                                
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+manish                                                                          
+wasseypur                                                                       
+salem                                                                           
+                                                                                
+faizaan                                                                         
+potheri                                                                         
+mardurai                                                                        
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+
+16 rows selected.
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10002                                            
+anshul                         10013                                            
+anshul                         10001                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+astha                          10002                                            
+atif                           10005                                            
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+20 rows selected.
+
+SQL> select * from account;
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10001      icici                 1000                                           
+10002      sbi                   1500                                           
+10003      hdfc                  2000                                           
+10004      hsbc                  2500                                           
+10005      icici                 3000                                           
+10006      sbi                   3500                                           
+10007      hdfc                  4000                                           
+10008      hsbc                  4500                                           
+10009      icici                 5000                                           
+10010      sbi                   5500                                           
+10011      sbi                   5000                                           
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10012      hsbc                  4500                                           
+10013      icici                 3300                                           
+10015      sbi                                                                  
+
+14 rows selected.
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL VARCHAR2(50)
+ CUSTOMER_STREET                                    VARCHAR2(50)
+ CUSTOMER_CITY                                      VARCHAR2(50)
+
+SQL> desc account;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ACCOUNT_NO                                NOT NULL VARCHAR2(10)
+ BRANCH_NAME                                        VARCHAR2(15)
+ BALANCE                                            NUMBER(12,2)
+
+SQL> desc depositor;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL VARCHAR2(30)
+ ACCOUNT_NO                                NOT NULL VARCHAR2(30)
+
+SQL> alter table depositor modify account_no NULL;
+
+Table altered.
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group by depositor.customer_name having count(distinct depositor.account_no)>=1;
+
+no rows selected
+
+SQL> desc depositor;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL VARCHAR2(30)
+ ACCOUNT_NO                                NOT NULL VARCHAR2(30)
+
+SQL> select * from account;
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10001      icici                 1000                                           
+10002      sbi                   1500                                           
+10003      hdfc                  2000                                           
+10004      hsbc                  2500                                           
+10005      icici                 3000                                           
+10006      sbi                   3500                                           
+10007      hdfc                  4000                                           
+10008      hsbc                  4500                                           
+10009      icici                 5000                                           
+10010      sbi                   5500                                           
+10011      sbi                   5000                                           
+
+ACCOUNT_NO BRANCH_NAME        BALANCE                                           
+---------- --------------- ----------                                           
+10012      hsbc                  4500                                           
+10013      icici                 3300                                           
+10015      sbi                                                                  
+
+14 rows selected.
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10002                                            
+anshul                         10013                                            
+anshul                         10001                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+astha                          10002                                            
+atif                           10005                                            
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+20 rows selected.
+
+SQL> delete from depositor where customer_name='anshul' and account_no='10001';
+
+0 rows deleted.
+
+SQL> delete * from depositor where customer_name='anshul';
+delete * from depositor where customer_name='anshul'
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> delete all from depositor where customer_name='anshul';
+delete all from depositor where customer_name='anshul'
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> delete from depositor where customer_name='anshul';
+
+2 rows deleted.
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10001                                            
+astha                          10002                                            
+atif                           10005                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+18 rows selected.
+
+SQL> delete from depositor where customer_name='anshul';
+
+0 rows deleted.
+
+SQL> select account_no from account;
+
+ACCOUNT_NO                                                                      
+----------                                                                      
+10001                                                                           
+10002                                                                           
+10003                                                                           
+10004                                                                           
+10005                                                                           
+10006                                                                           
+10007                                                                           
+10008                                                                           
+10009                                                                           
+10010                                                                           
+10011                                                                           
+
+ACCOUNT_NO                                                                      
+----------                                                                      
+10012                                                                           
+10013                                                                           
+10015                                                                           
+
+14 rows selected.
+
+SQL> select from customer where customer_city='mardurai';
+select from customer where customer_city='mardurai'
+       *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select * from customer where customer_city='mardurai';
+
+no rows selected
+
+SQL> select
+  2  8;
+8
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select * from customer;
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+aditya                                                                          
+sgroad                                                                          
+mardurai                                                                        
+                                                                                
+ankit                                                                           
+sgroad                                                                          
+mardurai                                                                        
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+kadam                                                                           
+sgroad                                                                          
+mardurai                                                                        
+                                                                                
+aman                                                                            
+pondscolony                                                                     
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+salem                                                                           
+                                                                                
+atif                                                                            
+aliroad                                                                         
+trichy                                                                          
+                                                                                
+namya                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+shyamal                                                                         
+ahemdabad                                                                       
+                                                                                
+nitya                                                                           
+gandhinagar                                                                     
+ahemdabad                                                                       
+                                                                                
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+akshit                                                                          
+satellite                                                                       
+trichy                                                                          
+                                                                                
+shwet                                                                           
+rastapa                                                                         
+salem                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+akshil                                                                          
+devracolony                                                                     
+trichy                                                                          
+                                                                                
+anshul                                                                          
+cgroad                                                                          
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+mardurai                                                                        
+                                                                                
+astha                                                                           
+rastepeh                                                                        
+salem                                                                           
+                                                                                
+amish                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+jivaraj                                                                         
+ahemdabad                                                                       
+                                                                                
+freya                                                                           
+ambavadi                                                                        
+trichy                                                                          
+                                                                                
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+manish                                                                          
+wasseypur                                                                       
+salem                                                                           
+                                                                                
+faizaan                                                                         
+potheri                                                                         
+mardurai                                                                        
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+
+16 rows selected.
+
+SQL> select * from customer where customer_city="mardurai";
+select * from customer where customer_city="mardurai"
+                                           *
+ERROR at line 1:
+ORA-00904: "mardurai": invalid identifier 
+
+
+SQL> select * from customer where customer_city='mardurai';
+
+no rows selected
+
+SQL> select * from customer where customer_city='trichy';
+
+no rows selected
+
+SQL> select * from customer where customer_city='Trichy';
+
+no rows selected
+
+SQL> select * from customer where customer_name='aditya';
+
+no rows selected
+
+SQL> select * from customer;
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+aditya                                                                          
+sgroad                                                                          
+mardurai                                                                        
+                                                                                
+ankit                                                                           
+sgroad                                                                          
+mardurai                                                                        
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+kadam                                                                           
+sgroad                                                                          
+mardurai                                                                        
+                                                                                
+aman                                                                            
+pondscolony                                                                     
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+salem                                                                           
+                                                                                
+atif                                                                            
+aliroad                                                                         
+trichy                                                                          
+                                                                                
+namya                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+shyamal                                                                         
+ahemdabad                                                                       
+                                                                                
+nitya                                                                           
+gandhinagar                                                                     
+ahemdabad                                                                       
+                                                                                
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+akshit                                                                          
+satellite                                                                       
+trichy                                                                          
+                                                                                
+shwet                                                                           
+rastapa                                                                         
+salem                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+akshil                                                                          
+devracolony                                                                     
+trichy                                                                          
+                                                                                
+anshul                                                                          
+cgroad                                                                          
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+mardurai                                                                        
+                                                                                
+astha                                                                           
+rastepeh                                                                        
+salem                                                                           
+                                                                                
+amish                                                                           
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+jivaraj                                                                         
+ahemdabad                                                                       
+                                                                                
+freya                                                                           
+ambavadi                                                                        
+trichy                                                                          
+                                                                                
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+manish                                                                          
+wasseypur                                                                       
+salem                                                                           
+                                                                                
+faizaan                                                                         
+potheri                                                                         
+mardurai                                                                        
+
+CUSTOMER_NAME                                                                   
+--------------------------------------------------                              
+CUSTOMER_STREET                                                                 
+--------------------------------------------------                              
+CUSTOMER_CITY                                                                   
+--------------------------------------------------                              
+                                                                                
+
+16 rows selected.
+
+SQL> 
+SQL> drop  table customer;
+
+Table dropped.
+
+SQL> create table customer (customer_name char(20), customer_street
+  2  
+SQL> create table customer (customer_name varchar(20), customer_street
+  2  varchar(30), customer_city varchar(30), primary key(customer_name));
+
+Table created.
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL VARCHAR2(20)
+ CUSTOMER_STREET                                    VARCHAR2(30)
+ CUSTOMER_CITY                                      VARCHAR2(30)
+
+SQL> insert into customer values('&customer_name','&customer_street','&customer_city');
+Enter value for customer_name: aditya
+Enter value for customer_street: sgroad
+Enter value for customer_city: mardurai
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('aditya','sgroad','mardurai')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: ankit
+Enter value for customer_street: sgroad
+Enter value for customer_city: mardurai
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('ankit','sgroad','mardurai')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: kadam
+Enter value for customer_street: sgroad
+Enter value for customer_city: marduarai
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('kadam','sgroad','marduarai')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: aman
+Enter value for customer_street: pondscolony
+Enter value for customer_city: salem
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('aman','pondscolony','salem')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: atif
+Enter value for customer_street: aliroad
+Enter value for customer_city: trichy
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('atif','aliroad','trichy')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: namya
+Enter value for customer_street: shyamal
+Enter value for customer_city: ahemdabad
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('namya','shyamal','ahemdabad')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: nitya
+Enter value for customer_street: gandhinagar
+Enter value for customer_city: ahemdabad
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('nitya','gandhinagar','ahemdabad')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: akshit
+Enter value for customer_street: satellite
+Enter value for customer_city: trichy
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('akshit','satellite','trichy')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: shwet
+Enter value for customer_street: rastapa
+Enter value for customer_city: salem
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('shwet','rastapa','salem')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: akshil
+Enter value for customer_street: devracolony
+Enter value for customer_city: trichy
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('akshil','devracolony','trichy')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: anshul
+Enter value for customer_street: cgroad
+Enter value for customer_city: mardurai
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('anshul','cgroad','mardurai')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: astha
+Enter value for customer_street: rastepeh
+Enter value for customer_city: salem
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('astha','rastepeh','salem')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: amish
+Enter value for customer_street: jivaraj
+Enter value for customer_city: ahemdabad
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('amish','jivaraj','ahemdabad')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: freya
+Enter value for customer_street: ambavadi
+Enter value for customer_city: trichy
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('freya','ambavadi','trichy')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: manish
+Enter value for customer_street: wasseypur
+Enter value for customer_city: salem
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('manish','wasseypur','salem')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: faizan
+Enter value for customer_street: potheri
+Enter value for customer_city: mardurai
+old   1: insert into customer values('&customer_name','&customer_street','&customer_city')
+new   1: insert into customer values('faizan','potheri','mardurai')
+
+1 row created.
+
+SQL> select * from customer;
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+aditya               sgroad                                                     
+mardurai                                                                        
+                                                                                
+ankit                sgroad                                                     
+mardurai                                                                        
+                                                                                
+kadam                sgroad                                                     
+marduarai                                                                       
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+aman                 pondscolony                                                
+salem                                                                           
+                                                                                
+atif                 aliroad                                                    
+trichy                                                                          
+                                                                                
+namya                shyamal                                                    
+ahemdabad                                                                       
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+nitya                gandhinagar                                                
+ahemdabad                                                                       
+                                                                                
+akshit               satellite                                                  
+trichy                                                                          
+                                                                                
+shwet                rastapa                                                    
+salem                                                                           
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+akshil               devracolony                                                
+trichy                                                                          
+                                                                                
+anshul               cgroad                                                     
+mardurai                                                                        
+                                                                                
+astha                rastepeh                                                   
+salem                                                                           
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+amish                jivaraj                                                    
+ahemdabad                                                                       
+                                                                                
+freya                ambavadi                                                   
+trichy                                                                          
+                                                                                
+manish               wasseypur                                                  
+salem                                                                           
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+faizan               potheri                                                    
+mardurai                                                                        
+                                                                                
+
+16 rows selected.
+
+SQL> select * from customer where customer_name='aditya';
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+aditya               sgroad                                                     
+mardurai                                                                        
+                                                                                
+
+SQL> select * from customer where customer_city='mardurai';
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+aditya               sgroad                                                     
+mardurai                                                                        
+                                                                                
+ankit                sgroad                                                     
+mardurai                                                                        
+                                                                                
+anshul               cgroad                                                     
+mardurai                                                                        
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+faizan               potheri                                                    
+mardurai                                                                        
+                                                                                
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10001                                            
+astha                          10002                                            
+atif                           10005                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+18 rows selected.
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group by depositor.customer_name having count(distinct depositor.account_no)>=1;
+
+CUSTOMER_NAME                  AVG(BALANCE)                                     
+------------------------------ ------------                                     
+aditya                                 4750                                     
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group by depositor.customer_name having count(distinct depositor.account_no)>=2;
+
+CUSTOMER_NAME                  AVG(BALANCE)                                     
+------------------------------ ------------                                     
+aditya                                 4750                                     
+
+SQL> select depositor.customer_name, avg(balance) from depositor, account, customer where depositor.account_no = account.account_no and depositor.customer_name = customer.customer_name and customer_city = 'mardurai' group by depositor.customer_name having count(distinct depositor.account_no)>=3;
+
+no rows selected
+
+SQL> spool"C:\Users\nandi\Desktop\4.1 txt";

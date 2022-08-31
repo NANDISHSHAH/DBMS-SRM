@@ -1,0 +1,119 @@
+SQL> create table customer (customer_name   char(20), customer_street char(30), customer_city char(30), primary key(customer_name));
+
+Table created.
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL CHAR(20)
+ CUSTOMER_STREET                                    CHAR(30)
+ CUSTOMER_CITY                                      CHAR(30)
+
+SQL> create table branch (branch_name  char(15),branch_city char(30),assets numeric(16,2),primary key(branch_name),
+  2    2  check(assets>=0),check(branch_name in('sbi','pnb','iob','icc','kvb','icici','hdfc','hsbc')));
+  2  check(assets>=0),check(branch_name in('sbi','pnb','iob','icc','kvb','icici','hdfc','hsbc')))
+  *
+ERROR at line 2:
+ORA-00904: : invalid identifier
+
+
+SQL> create table branch(branch_name char(15),branch_city char(30),assets numeric(16,2),primary key(branch_name),check(assets>=0),check(branch_name in('sbi','pnb','iob','icc','kvb','icici','hdfc','hsbc')));
+
+Table created.
+
+SQL> desc branch;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BRANCH_NAME                               NOT NULL CHAR(15)
+ BRANCH_CITY                                        CHAR(30)
+ ASSETS                                             NUMBER(16,2)
+
+SQL> create table account(account_no char(10),branch_name char(15),balance numeric(12,2),check(balance>0),primary key(account_no));
+
+Table created.
+
+SQL> desc account;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ACCOUNT_NO                                NOT NULL CHAR(10)
+ BRANCH_NAME                                        CHAR(15)
+ BALANCE                                            NUMBER(12,2)
+
+SQL> create table depositor(customer_name char(20),account_no char(10),primary key(customer_name,account_no);
+create table depositor(customer_name char(20),account_no char(10),primary key(customer_name,account_no)
+                                                                                                      *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table depositor(customer_name char(20),account_no char(10),primary key(customer_name,account_no));
+
+Table created.
+
+SQL> desc depositor;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL CHAR(20)
+ ACCOUNT_NO                                NOT NULL CHAR(10)
+
+SQL> create table loan(loan_no char(20),branch_name char(20),amount numeric(12,2),primary key(loan_no));
+
+Table created.
+
+SQL> desc loan;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ LOAN_NO                                   NOT NULL CHAR(20)
+ BRANCH_NAME                                        CHAR(20)
+ AMOUNT                                             NUMBER(12,2)
+
+SQL> create table borrower(customer_name char(20),loan_no char(20),primary key(customer_name,loan_no));
+
+Table created.
+
+SQL> desc borrower;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL CHAR(20)
+ LOAN_NO                                   NOT NULL CHAR(20)
+
+SQL> select*from tab;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+ACCOUNT                        TABLE
+BORROWER                       TABLE
+BRANCH                         TABLE
+CUSTOMER                       TABLE
+DEPOSITOR                      TABLE
+LOAN                           TABLE
+
+6 rows selected.
+
+SQL> create table branch1(brname,city)as select branch_name,branch_city from branch;
+
+Table created.
+
+SQL> select*from branch1;
+
+no rows selected
+
+SQL> create table customer1 as select customer_name,customer_street,customer_city from customer where customer city in('mardurai','trichy','salem');
+create table customer1 as select customer_name,customer_street,customer_city from customer where customer city in('mardurai','trichy','salem')
+                                                                                                          *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> create table customer1 as select customer_name,customer_street,customer_city from customer where customer_city in('mardurai','trichy','salem');
+
+Table created.
+
+SQL> select*from customer1;
+
+no rows selected
+
+SQL> commit;
+
+Commit complete.
+

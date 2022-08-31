@@ -1,0 +1,140 @@
+SQL> select borrower.customer_name, avg(amount) from borrower, loan,customer where borrower.loan_no=loan.loan_no and borrower.customer_name=customer.customer_name and customer_city='mardurai' group by borrower.customer_name having count(distinct borrower.loan_no)>=2;
+
+no rows selected
+
+SQL> select customer_name from customer where customer_city in
+  2  
+SQL> (`chennai', `madurai');
+(`chennai', `madurai')
+ *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select customer_name from customer where customer_city in ('trichy','mardurai');
+
+CUSTOMER_NAME                                                                   
+--------------------                                                            
+aditya                                                                          
+ankit                                                                           
+atif                                                                            
+akshit                                                                          
+akshil                                                                          
+anshul                                                                          
+freya                                                                           
+faizan                                                                          
+
+8 rows selected.
+
+SQL> select account_no from account where balance between 1000 and 5000;
+
+ACCOUNT_NO                                                                      
+----------                                                                      
+10001                                                                           
+10002                                                                           
+10003                                                                           
+10004                                                                           
+10005                                                                           
+10006                                                                           
+10007                                                                           
+10008                                                                           
+10009                                                                           
+10011                                                                           
+10012                                                                           
+
+ACCOUNT_NO                                                                      
+----------                                                                      
+10013                                                                           
+
+12 rows selected.
+
+SQL> select account_no from account where balance not between 1000
+  2  
+SQL> select account_no from account where balance not between 1000 and 5000;
+
+ACCOUNT_NO                                                                      
+----------                                                                      
+10010                                                                           
+
+SQL> select distinct customer_name from borrower where customer_name in(select customer_name from depositor);
+
+CUSTOMER_NAME                                                                   
+------------------------------                                                  
+atif                                                                            
+kadam                                                                           
+namya                                                                           
+aman                                                                            
+ankit                                                                           
+aditya                                                                          
+nitya                                                                           
+
+7 rows selected.
+
+SQL> select * from depositor;
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+aditya                         10011                                            
+aditya                         10012                                            
+aditya                         10001                                            
+akshil                         10010                                            
+akshit                         10008                                            
+aman                           10004                                            
+amish                          10003                                            
+ankit                          10002                                            
+anshul                         10001                                            
+astha                          10002                                            
+atif                           10005                                            
+
+CUSTOMER_NAME                  ACCOUNT_NO                                       
+------------------------------ ------------------------------                   
+faizaan                        10006                                            
+freya                          10004                                            
+kadam                          10003                                            
+manish                         10005                                            
+namya                          10006                                            
+nitya                          10007                                            
+shwet                          10009                                            
+
+18 rows selected.
+
+SQL> select * from borrower;
+
+CUSTOMER_NAME                  LOAN_NO                                          
+------------------------------ ------------------------------                   
+aditya                         lo106                                            
+aman                           lo109                                            
+ankit                          lo107                                            
+ankita                         lo102                                            
+atif                           lo110                                            
+kadam                          lo108                                            
+kartik                         lo100                                            
+namya                          lo100                                            
+nitya                          lo102                                            
+raju                           lo103                                            
+rakesh                         lo104                                            
+
+CUSTOMER_NAME                  LOAN_NO                                          
+------------------------------ ------------------------------                   
+ramesh                         lo105                                            
+shweta                         lo101                                            
+
+13 rows selected.
+
+SQL> desc borrower
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL VARCHAR2(30)
+ LOAN_NO                                   NOT NULL VARCHAR2(30)
+
+SQL> desc  borrower;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL VARCHAR2(30)
+ LOAN_NO                                   NOT NULL VARCHAR2(30)
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

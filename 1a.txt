@@ -1,0 +1,488 @@
+SQL> insert into loan values('&loan_no','&branch_name',&amount);
+Enter value for loan_no: lo100
+Enter value for branch_name: hsbc
+Enter value for amount: 10000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo100','hsbc',10000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo101
+Enter value for branch_name: icic
+Enter value for amount: 15000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo101','icic',15000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo102
+Enter value for branch_name: pnb
+Enter value for amount: 10000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo102','pnb',10000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo103
+Enter value for branch_name: iob
+Enter value for amount: 20000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo103','iob',20000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo104
+Enter value for branch_name: hsbc
+Enter value for amount: 25000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo104','hsbc',25000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo105
+Enter value for branch_name: icic
+Enter value for amount: 20000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo105','icic',20000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo106
+Enter value for branch_name: pnb
+Enter value for amount: 30000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo106','pnb',30000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo107
+Enter value for branch_name: iob
+Enter value for amount: 35000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo107','iob',35000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo106
+Enter value for branch_name: 
+Enter value for amount: 
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo106','',)
+insert into loan values('lo106','',)
+                                   *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> /
+Enter value for loan_no: lo108
+Enter value for branch_name: hsbc
+Enter value for amount: 10000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo108','hsbc',10000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo109
+Enter value for branch_name: icic
+Enter value for amount: 15000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo109','icic',15000)
+
+1 row created.
+
+SQL> /
+Enter value for loan_no: lo110
+Enter value for branch_name: pnb
+Enter value for amount: 20000
+old   1: insert into loan values('&loan_no','&branch_name',&amount)
+new   1: insert into loan values('lo110','pnb',20000)
+
+1 row created.
+
+SQL> insert into borrower values('&customer_name','&loan_no');
+Enter value for customer_name: kartik
+Enter value for loan_no: lo100
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('kartik','lo100')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: shweta
+Enter value for loan_no: lo101
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('shweta','lo101')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: ankita
+Enter value for loan_no: lo102
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('ankita','lo102')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: raju
+Enter value for loan_no: lo103
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('raju','lo103')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: rakesh
+Enter value for loan_no: lo104
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('rakesh','lo104')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: ramesh
+Enter value for loan_no: lo105
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('ramesh','lo105')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: aditya
+Enter value for loan_no: lo106
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('aditya','lo106')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: ankit
+Enter value for loan_no: lo107
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('ankit','lo107')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: kadam
+Enter value for loan_no: lo108
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('kadam','lo108')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: aman
+Enter value for loan_no: lo109
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('aman','lo109')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: atif
+Enter value for loan_no: lo110
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('atif','lo110')
+
+1 row created.
+
+SQL> /
+Enter value for customer_name: namya
+Enter value for loan_no: lo100
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('namya','lo100')
+
+1 row created.
+
+SQL> select*from borrower;
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+aditya               lo106                                                      
+aman                 lo109                                                      
+ankit                lo107                                                      
+ankita               lo102                                                      
+atif                 lo110                                                      
+kadam                lo108                                                      
+kartik               lo100                                                      
+namya                lo100                                                      
+raju                 lo103                                                      
+rakesh               lo104                                                      
+ramesh               lo105                                                      
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+shweta               lo101                                                      
+
+12 rows selected.
+
+SQL> insert into borrower values('&customer_name','&loan_no');
+Enter value for customer_name: nitya
+Enter value for loan_no: lo102
+old   1: insert into borrower values('&customer_name','&loan_no')
+new   1: insert into borrower values('nitya','lo102')
+
+1 row created.
+
+SQL> select*from borrower;
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+aditya               lo106                                                      
+aman                 lo109                                                      
+ankit                lo107                                                      
+ankita               lo102                                                      
+atif                 lo110                                                      
+kadam                lo108                                                      
+kartik               lo100                                                      
+namya                lo100                                                      
+nitya                lo102                                                      
+raju                 lo103                                                      
+rakesh               lo104                                                      
+
+CUSTOMER_NAME        LOAN_NO                                                    
+-------------------- --------------------                                       
+ramesh               lo105                                                      
+shweta               lo101                                                      
+
+13 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert into branch1 select branch_name,branch_city from branch;
+
+6 rows created.
+
+SQL> select*from branch1;
+
+BRNAME          CITY                                                            
+--------------- ------------------------------                                  
+icici           mardurai                                                        
+sbi             trichy                                                          
+hdfc            salem                                                           
+hsbc            ahemdabad                                                       
+pnb             mumbai                                                          
+iob             chennai                                                         
+
+6 rows selected.
+
+SQL> select*from customer1;
+
+no rows selected
+
+SQL> desc customer1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                                      CHAR(20)
+ CUSTOMER_STREET                                    CHAR(30)
+ CUSTOMER_CITY                                      CHAR(30)
+
+SQL> select *from customer1;
+
+no rows selected
+
+SQL> insert into customer1 as select customer_name,customer_street,customer_city from customer where customer_city='salem';
+insert into customer1 as select customer_name,customer_street,customer_city from customer where customer_city='salem'
+                      *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword 
+
+
+SQL> insert into customer1 as select customer_name,customer_street,customer_city from customer where customer_city='salem';
+insert into customer1 as select customer_name,customer_street,customer_city from customer where customer_city='salem'
+                      *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword 
+
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL CHAR(20)
+ CUSTOMER_STREET                                    CHAR(30)
+ CUSTOMER_CITY                                      CHAR(30)
+
+SQL> select*from customer;
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+aditya               sgroad                                                     
+mardurai                                                                        
+                                                                                
+ankit                sgroad                                                     
+mardurai                                                                        
+                                                                                
+kadam                sgroad                                                     
+mardurai                                                                        
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+aman                 pondscolony                                                
+salem                                                                           
+                                                                                
+atif                 aliroad                                                    
+trichy                                                                          
+                                                                                
+namya                shyamal                                                    
+ahemdabad                                                                       
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+nitya                gandhinagar                                                
+ahemdabad                                                                       
+                                                                                
+akshit               satellite                                                  
+trichy                                                                          
+                                                                                
+shwet                rastapa                                                    
+salem                                                                           
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+akshil               devracolony                                                
+trichy                                                                          
+                                                                                
+anshul               cgroad                                                     
+mardurai                                                                        
+                                                                                
+astha                rastepeh                                                   
+salem                                                                           
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+amish                jivaraj                                                    
+ahemdabad                                                                       
+                                                                                
+freya                ambavadi                                                   
+trichy                                                                          
+                                                                                
+manish               wasseypur                                                  
+salem                                                                           
+                                                                                
+
+CUSTOMER_NAME        CUSTOMER_STREET                                            
+-------------------- ------------------------------                             
+CUSTOMER_CITY                                                                   
+------------------------------                                                  
+faizaan              potheri                                                    
+mardurai                                                                        
+                                                                                
+
+16 rows selected.
+
+SQL> insert into customer1 as select customer_name, customer _street,
+  2  customer_city from customer where customer city = `salem';
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> insert into customer1 as select customer_name, customer _street,
+  2  customer_city from customer where customer city = "salem";
+insert into customer1 as select customer_name, customer _street,
+                      *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword 
+
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                             NOT NULL CHAR(20)
+ CUSTOMER_STREET                                    CHAR(30)
+ CUSTOMER_CITY                                      CHAR(30)
+
+SQL> insert into customer1 as select customer_name, customer _street,
+  2  customer_city from customer where customer city = "salem";
+insert into customer1 as select customer_name, customer _street,
+                      *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword 
+
+
+SQL> desc customer1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_NAME                                      CHAR(20)
+ CUSTOMER_STREET                                    CHAR(30)
+ CUSTOMER_CITY                                      CHAR(30)
+
+SQL> insert into customer1  select customer_name, customer _street,
+  2  customer_city from customer where customer city = "salem";
+insert into customer1  select customer_name, customer _street,
+                                                      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into customer1  select customer_name, customer _street,
+  2  customer_city from customer where customer city = 'salem';
+insert into customer1  select customer_name, customer _street,
+                                                      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into customer1 select customer_name,customer_street,customer_city from customer where customer where customer customer_city='salem';
+insert into customer1 select customer_name,customer_street,customer_city from customer where customer where customer customer_city='salem'
+                                                                                                      *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> insert into customer1  select customer_name, customer _street,customer_city from customer where customer_city='salem';
+insert into customer1  select customer_name, customer _street,customer_city from customer where customer_city='salem'
+                                                      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into customer1 select customer_name, customer _street,customer_city from customer where customer_city='salem';
+insert into customer1 select customer_name, customer _street,customer_city from customer where customer_city='salem'
+                                                     *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into customer1 select customer_name, customer _street,customer_city from customer where customer_city='trichy';
+insert into customer1 select customer_name, customer _street,customer_city from customer where customer_city='trichy'
+                                                     *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into customer1 select customer_name, customer_street,customer_city from customer where customer_city='trichy';
+
+4 rows created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;
